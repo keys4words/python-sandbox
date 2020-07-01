@@ -18,6 +18,16 @@ class MyObject:
 
     def __init__(self):
         self.data_attribute = 43
+        self.__private_attr = 876
+
+    @property
+    def private_attr(self):
+        return self.__private_attr
+
+    @private_attr.setter
+    def private_attr(self, attr):
+        if attr < 100:
+            self.__private_attr = attr
 
     def instance_method(self):
         print(self.data_attribute)
@@ -49,14 +59,19 @@ class Circle:
         return cls(radius)
 
 def main():
-    rectangle = Rectangle(3, 4)
-    print(rectangle)
+    # rectangle = Rectangle(3, 4)
+    # print(rectangle)
 
-    first_circle = Circle(1)
-    print(first_circle)
+    # first_circle = Circle(1)
+    # print(first_circle)
 
-    second_circle = Circle.from_rectangle(rectangle)
-    print(second_circle)
+    # second_circle = Circle.from_rectangle(rectangle)
+    # print(second_circle)
+    obj = MyObject()
+    print(obj.private_attr)
+    obj.private_attr = 90
+    print(obj.private_attr)
+
 
 
 if __name__ == '__main__':
