@@ -34,16 +34,31 @@ class Triangle(Figure):
             print('* ' * i)
 
 
-class Horse:
-    def run(self):
-        print('I am running')
+class Animal(object):
+    def __init__(self):
+        self.can_run = False
+        self.can_fly = False
 
-class Bird:
-    def fly(self):
-        print('I am flying')
+    def print_abilities(self):
+        print(type(self).__name__ + ':')
+        print('Can run:', self.can_run)
+        print('Can fly:', self.can_fly)
+        print()
+
+class Horse(Animal):
+    def __init__(self):
+        super().__init__()
+        self.can_run = True
+
+class Bird(Animal):
+    def __init__(self):
+        super().__init__()
+        self.can_fly = True
+
 
 class Pegasus(Horse, Bird):
     pass
+
 
 
 class A:
@@ -73,6 +88,20 @@ class MethodContainer:
         print('data = ', self.data)
 
 
+def check_instance(obj, cls):
+    # return cls in type(obj).mro()
+    return check_subclass(type(obj), cls)
+
+def check_subclass(child, base):
+    if child == base:
+        return True
+    for direct_base in child.__bases__:
+        if base == direct_base:
+            return True
+        return check_subclass(direct_base, base)
+    return False
+
+
 def main():
     # square = Square(3)
     # triangle = Triangle(4)
@@ -80,21 +109,29 @@ def main():
     # print()
     # triangle.draw()
 
-    # pegasus = Pegasus()
-    # pegasus.run()
-    # pegasus.fly()
-    # print(Pegasus.__name__)
-    # print(Pegasus.__bases__)
+    horse = Horse()
+    horse.print_abilities()
+    bird = Bird()
+    bird.print_abilities()
+    pegasus = Pegasus()
+    pegasus.print_abilities()
+
+    print(Pegasus.__name__)
+    print(Pegasus.__bases__)
 
     # obj = D()
     # obj.method()
     # for cls in [A, B, C, D]:
     #     print(cls.__name__, cls.__mro__)
 
-    instance = MethodContainer(8)
-    print(type(MethodContainer.method))
-    print(type(instance.method))
-    MethodContainer.method(instance)
+    # instance = MethodContainer(8)
+    # print(type(MethodContainer.method))
+    # print(type(instance.method))
+    # MethodContainer.method(instance)
 
 if __name__ == '__main__':
     main()
+    print(check_instance(8, int))
+    print(check_instance('8', int))
+    print(check_subclass(bool, int))
+    print(check_subclass(bool, str))
