@@ -33,6 +33,12 @@ class Student:
     def __repr__(self):
         return f'{self.student_id}: {self.first_name} {self.last_name} is student at courses: {self.courses}'
 
+
+class StudentAthlete(Student):
+    def __init__(self, first_name, last_name, courses=None, sport=None):
+        super().__init__(first_name, last_name, courses)
+        self.sport = sport
+
 class Group:
     def __init__(self, amt):
         self.group = []
