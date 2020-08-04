@@ -75,10 +75,11 @@ class Apartment:
                 res += 'Owner: ' + str(self.owners[i]) + '\n'
         return res
 
-
-house = House(2, 4)
-owner1 = Owner("Steven Spielberg")
-owner2 = Owner("James Cameron")
-house.settle(owner1)
-house.settle(owner2)
-print(house)
+if __name__ == "__main__":
+    house = House(2, 4)
+    owner1 = Owner("Steven Spielberg")
+    owner2 = Owner("James Cameron")
+    house.settle(owner1)
+    house.settle(owner2)
+    print(house)
+    
