@@ -1,7 +1,7 @@
 import os.path
 
-with open(os.path.join('inout', 'data', 'example.txt')) as myfile:
-    print(myfile.read())
+# with open(os.path.join('inout', 'data', 'example.txt')) as myfile:
+#     print(myfile.read())
 # myfile.close()
 
 
@@ -18,6 +18,10 @@ class MyManager:
         if exc_type:
             print('Exception occured: {}'.format(exc_type))
 
-with MyManager() as resource:
-    print("some actions with resource:", resource)
-    raise ValueError
+# with MyManager() as resource:
+#     print("some actions with resource:", resource)
+#     raise ValueError
+
+with open(__file__) as source:
+    for number, line in enumerate(source, 1):
+        print('{:3}: {}'.format(number, line), end='')
