@@ -33,11 +33,31 @@ class PersonTarget:
 
 
 infile = 'data/in2.xml'
-parser = et.XMLParser(target=PersonTarget())
-tree = et.parse(infile, parser)
+# target parser
+# parser = et.XMLParser(target=PersonTarget())
+# tree = et.parse(infile, parser)
 
+# xpath parser
+tree = et.parse(infile)
 res = tree.getroot()
 
-for el in res:
-    print(el)
+# for el in res:
+    # print(el)
 # pprint.pprint(res)
+for student in res:
+    print('PK: ', (student.attrib, student.get('pk')))
+    print(f"\t{student.find('./first_name').text}")
+    print(f"\t{student.find('./last_name').text}")
+    print(f"\t{student.find('./age').text}")
+
+
+first_names = res.findall('./person/first_name')
+last_names = res.findall('./person/last_name')
+ages = res.findall('./person/age')
+
+for values in zip(first_names, last_names, ages):
+    row = {value.tag: value.text for value in values}
+    print(row)
+
+z = zip(['a', 'b', 'c'], [10, 20, 30], ['one', 'second', 'third'])
+pprint.pprint(list(z))
