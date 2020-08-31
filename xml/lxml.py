@@ -44,20 +44,26 @@ res = tree.getroot()
 # for el in res:
     # print(el)
 # pprint.pprint(res)
-for student in res:
-    print('PK: ', (student.attrib, student.get('pk')))
-    print(f"\t{student.find('./first_name').text}")
-    print(f"\t{student.find('./last_name').text}")
-    print(f"\t{student.find('./age').text}")
+# for student in res:
+#     print('PK: ', (student.attrib, student.get('pk')))
+#     print(f"\t{student.find('./first_name').text}")
+#     print(f"\t{student.find('./last_name').text}")
+#     print(f"\t{student.find('./age').text}")
 
 
-first_names = res.findall('./person/first_name')
-last_names = res.findall('./person/last_name')
-ages = res.findall('./person/age')
+# first_names = res.findall('./person/first_name')
+first_names = res.findall('./person[@pk="21"]/first_name')
+last_names = res.findall('./person[@pk="21"]/last_name')
+ages = res.findall('./person[@pk="21"]/age')
 
 for values in zip(first_names, last_names, ages):
     row = {value.tag: value.text for value in values}
     print(row)
 
 z = zip(['a', 'b', 'c'], [10, 20, 30], ['one', 'second', 'third'])
-pprint.pprint(list(z))
+# pprint.pprint(list(z))
+
+# print(first_name)
+
+last_name = res.find('./person/age/..[@pk][2]/first_name').text
+print(last_name)
