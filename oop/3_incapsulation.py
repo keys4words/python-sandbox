@@ -20,35 +20,35 @@ RED = '\033[1;31m'
 class Account:
     def __init__(self, name, balance):
         self.name = name
-        self.balance = balance
-        self.history = []
+        self._balance = balance
+        self._history = []
 
     @staticmethod
     def _get_current_time():
         return pytz.utc.localize(datetime.now())
 
     def deposit(self, amount):
-        self.balance += amount
+        self._balance += amount
         print(f'Deposit operation of ${amount} completed!')
         self.show_balance()
-        self.history.append([amount, self._get_current_time()])
+        self._history.append([amount, self._get_current_time()])
 
     def withdraw(self, amount):
-        if self.balance > amount:
-            self.balance -= amount
+        if self._balance > amount:
+            self._balance -= amount
             print(f'Withdraw {amount} completed!')
             self.show_balance()
-            self.history.append([-amount, self._get_current_time()])
+            self._history.append([-amount, self._get_current_time()])
         else:
             print('Not enough money')
             self.show_balance()
 
     def show_balance(self):
-        print(f'Your actual balance is ${self.balance}')
+        print(f'Your actual balance is ${self._balance}')
         print('='*35)
 
     def show_history(self):
-        for amount, date in self.history:
+        for amount, date in self._history:
             if amount > 0:
                 transaction = 'deposit'
                 color = GREEN
