@@ -21,7 +21,7 @@ class Person:
 
 
 
-class StringD:
+class StringDescriptor:
     def __init__(self, value=None):
         if value:
             self.set(value)
@@ -29,20 +29,20 @@ class StringD:
     def set(self, value):
         self._value = value
 
-    
     def get(self):
         return self._value
 
 
 class Person2:
     def __init__(self, name, surname):
-        self.name = StringD(name)
-        self.surname = StringD(surname)
-
+        self.name = StringDescriptor(name)
+        self.surname = StringDescriptor(surname)
 
 
 # p = Person2('Ivan', 'Ivanov')
 # print(p.__dict__)
+# print(p.name.get())
+# p.name.set('Petr')
 # print(p.name.get())
 
 
@@ -90,7 +90,9 @@ class Game:
 # d = Game()
 # for i in range(3):
 #     print(d.dice)
+#     print(d.flip)
 #     print(d.rock_paper_scissors)
+#     print('-'*36)
 
 # print(d.flip)
 
@@ -108,6 +110,6 @@ class Game2:
     flip = Choice('heads', 'tails')
 
 d = Game2()
-print(d.dice)
-print(d.dice)
-print(d.dice)
+print(d.dice, d.flip)
+print(d.dice, d.flip)
+print(d.dice, d.flip)
