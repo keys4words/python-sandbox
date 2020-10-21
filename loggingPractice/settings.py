@@ -4,7 +4,7 @@ logger_config = {
 
     'formatters': {
         'std_format': {
-            'format': '{asctime} - {levelname} - {name} - {message}',
+            'format': '{asctime} - {levelname} - {name} - {module}:{funcName}:{lineno} - {message}',
             'style': '{'
         }
     },
