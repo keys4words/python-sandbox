@@ -109,7 +109,50 @@ class Game2:
     dice = Choice(1, 2, 3, 4, 5, 6)       
     flip = Choice('heads', 'tails')
 
-d = Game2()
-print(d.dice, d.flip)
-print(d.dice, d.flip)
-print(d.dice, d.flip)
+# d = Game2()
+# print(d.dice, d.flip)
+# print(d.dice, d.flip)
+# print(d.dice, d.flip)
+
+##########################################################
+# need to have str capitalizing in name property
+# standard solution
+# class Man:
+#     def __init__(self, name):
+#         self.name = name
+
+#     def __setattr__(self, attr, value):
+#         if attr == 'name':
+#             super().__setattr__(attr, value.capitalize())
+#         else:
+#             super().__setattr__(attr, value)
+
+# solution with property
+# class Man:
+#     def __init__(self, name):
+#         self.name = name
+
+#     @property
+#     def name(self):
+#         return self._name
+
+#     @name.setter
+#     def name(self, value):
+#         self._name = value.capitalize()
+
+
+# solution with non-data descriptors
+class CapitalizedValue:
+    pass
+
+
+class Man:
+    name = CapitalizedValue()
+
+    def __init__(self, name):
+
+
+
+
+m1 = Man('max')
+print(m1.name)
