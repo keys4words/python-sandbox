@@ -24,7 +24,7 @@ async def blink(canvas, row, column, symbol='*'):
 def draw(canvas):
     row, column = (5, 20)
     canvas.border()
-    coroutines = []
+    # coroutines = []
     while True:
         canvas.addstr(row, column, '*', curses.A_DIM)
         curses.curs_set(False)
