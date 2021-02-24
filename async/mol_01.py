@@ -11,7 +11,7 @@ while True:
     print('Connection from', addr)
 
     while True:
-        print('Before recv')
+        print('Before .recv')
         request = client_socket.recv(4096)
 
         if not request:
@@ -19,3 +19,6 @@ while True:
         else:
             response = 'Hello world\n'.encode()
             client_socket.send(response)
+
+    print('Outside inner while loop')
+    client_socket.close()
