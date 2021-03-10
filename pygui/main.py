@@ -4,25 +4,29 @@ from time import sleep
 
 pyautogui.FAILSAFE = True
 
-x, y = pyautogui.size()
+# x, y = pyautogui.size()
+# pyautogui.displayMousePosition()
 # pyautogui.moveTo(x/2, y/2, duration=1.5)
 # pyautogui.move(-200, 50, duration=1)
-pyautogui.moveTo(113, 747, duration=1.5)
-pyautogui.click()
+# pyautogui.moveTo(711, 1057, duration=0.5)
+# pyautogui.click()
+
+isError = pyautogui.locateOnScreen('22.jpg')
+print(isError)
 
 # pyautogui.click(clicks=10, interval=0.05)
 # pyautogui.doubleClick()
 # pyautogui.rightClick()
 # pyautogui.vscroll(200)
 # pyautogui.typewrite('Add something', interval=0.2)
-pyautogui.sleep(0.5)
-pyautogui.moveTo(241, 457, duration=0.5)
+# pyautogui.sleep(0.5)
+# pyautogui.moveTo(241, 457, duration=0.5)
 
-pyautogui.click()
-pyautogui.hotkey('shift', 'alt')
-pyautogui.typewrite(['к', 'о', 'т', 'енок'], interval=0.4)
+# pyautogui.click()
+# pyautogui.hotkey('shift', 'alt')
+# pyautogui.typewrite(['к', 'о', 'т', 'енок'], interval=0.4)
 
-pyautogui.press('enter')
+# pyautogui.press('enter')
 
 # click on icon on screen
 # pyautogui.locateCenterOnScreen('path/to/icon')
