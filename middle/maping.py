@@ -5,3 +5,4 @@ def func(x):
 
 
 print(list(map(func, arr)))
+print(list(map(lambda x: x**3, arr)))
